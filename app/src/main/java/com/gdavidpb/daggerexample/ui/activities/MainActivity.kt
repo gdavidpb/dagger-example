@@ -1,7 +1,8 @@
-package com.gdavidpb.daggerexample
+package com.gdavidpb.daggerexample.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.gdavidpb.daggerexample.R
 
 class MainActivity : AppCompatActivity() {
 
