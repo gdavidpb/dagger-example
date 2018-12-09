@@ -5,4 +5,7 @@
 
     <string name="text_list_empty">¡Parece que aquí no hay nada aún!</string>
 
+    <string name="toast_error">Ocurrió un error</string>
+    <string name="toast_no_connection">No hay conexión</string>
+
 </resources>
