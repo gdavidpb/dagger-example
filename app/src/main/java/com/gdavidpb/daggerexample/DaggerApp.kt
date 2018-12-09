@@ -1,6 +1,7 @@
 package com.gdavidpb.daggerexample
 
 import com.gdavidpb.daggerexample.data.di.modules.ContributorModule
+import com.gdavidpb.daggerexample.data.di.modules.NetworkModule
 import com.gdavidpb.daggerexample.data.di.modules.ViewModelModule
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -13,7 +14,8 @@ open class DaggerApp : DaggerApplication() {
         modules = [
             AndroidSupportInjectionModule::class,
             ViewModelModule::class,
-            ContributorModule::class
+            ContributorModule::class,
+            NetworkModule::class
         ]
     )
     interface Component : AndroidInjector<DaggerApp> {

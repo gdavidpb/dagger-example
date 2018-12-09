@@ -1,6 +1,7 @@
 <resources>
 
     <string name="app_name">Dagger Example</string>
+    <string name="baseUrl">https://jsonplaceholder.typicode.com</string>
 
     <string name="text_list_empty">¡Parece que aquí no hay nada aún!</string>
 
