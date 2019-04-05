@@ -61,12 +61,12 @@ class MainActivity : AppCompatActivity() {
                 if (posts.isNotEmpty()) {
                     tViewListEmpty.visibility = View.GONE
                     rViewList.visibility = View.VISIBLE
-
-                    postsAdapter.swapItems(new = posts)
                 } else {
                     rViewList.visibility = View.GONE
                     tViewListEmpty.visibility = View.VISIBLE
                 }
+
+                postsAdapter.swapItems(new = posts)
             }
             is Result.OnError -> {
                 sLayoutList.isRefreshing = false
