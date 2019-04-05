@@ -2,10 +2,10 @@ package com.gdavidpb.daggerexample.ui.activities
 
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.gdavidpb.daggerexample.R
 import com.gdavidpb.daggerexample.data.utils.isNetworkAvailable
 import com.gdavidpb.daggerexample.data.utils.notNull
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 

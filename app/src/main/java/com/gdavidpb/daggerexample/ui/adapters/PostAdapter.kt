@@ -1,8 +1,8 @@
 package com.gdavidpb.daggerexample.ui.adapters
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.gdavidpb.daggerexample.R
 import com.gdavidpb.daggerexample.domain.model.Post
 import com.gdavidpb.daggerexample.ui.viewholders.PostViewHolder

@@ -1,10 +1,10 @@
 package com.gdavidpb.daggerexample.data.utils
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
 import android.net.ConnectivityManager
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 
 /* Context */
 

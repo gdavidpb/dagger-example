@@ -10,7 +10,7 @@ import com.gdavidpb.daggerexample.domain.usecase.service.GetPostsUseCase
 import com.gdavidpb.daggerexample.presentation.viewmodel.MainActivityViewModel
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.viewmodel.experimental.builder.viewModel
+import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
 import org.koin.experimental.builder.create
 import retrofit2.Retrofit
