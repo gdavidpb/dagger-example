@@ -1,13 +1,10 @@
 package com.gdavidpb.daggerexample.data.utils
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.net.ConnectivityManager
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 
 /* Context */
 
@@ -20,26 +17,6 @@ fun <T, L : LiveData<T>> FragmentActivity.observe(liveData: L, body: (T?) -> Uni
 
 fun <T, L : LiveData<T>> Fragment.observe(liveData: L, body: (T?) -> Unit) =
     liveData.observe(viewLifecycleOwner, Observer(body))
-
-/* Model-View-View Model */
-
-inline fun <reified T : ViewModel> FragmentActivity.getViewModel(
-    viewModelFactory: ViewModelProvider.Factory
-): T = ViewModelProviders.of(this, viewModelFactory)[T::class.java]
-
-inline fun <reified T : ViewModel> Fragment.getViewModel(
-    viewModelFactory: ViewModelProvider.Factory
-): T = ViewModelProviders.of(this, viewModelFactory)[T::class.java]
-
-inline fun <reified T : ViewModel> FragmentActivity.withViewModel(
-    viewModelFactory: ViewModelProvider.Factory,
-    body: T.() -> Unit
-): T = getViewModel<T>(viewModelFactory).also(body)
-
-inline fun <reified T : ViewModel> Fragment.withViewModel(
-    viewModelFactory: ViewModelProvider.Factory,
-    body: T.() -> Unit
-): T = getViewModel<T>(viewModelFactory).also(body)
 
 /* Utils */
 
