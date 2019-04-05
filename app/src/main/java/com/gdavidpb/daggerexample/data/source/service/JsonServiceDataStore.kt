@@ -4,7 +4,7 @@ import com.gdavidpb.daggerexample.domain.model.Post
 import com.gdavidpb.daggerexample.domain.repository.JsonRepository
 import retrofit2.Call
 
-open class JsonServiceDataStore constructor(
+open class JsonServiceDataStore(
     private val service: JsonService
 ) : JsonRepository {
     override fun getPosts(): List<Post> = service.getPosts().resolve()

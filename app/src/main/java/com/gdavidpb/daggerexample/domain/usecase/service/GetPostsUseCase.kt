@@ -5,7 +5,7 @@ import com.gdavidpb.daggerexample.domain.repository.JsonRepository
 import com.gdavidpb.daggerexample.domain.usecase.coroutines.ResultUseCase
 import kotlinx.coroutines.Dispatchers
 
-open class GetPostsUseCase constructor(
+open class GetPostsUseCase(
         private val jsonRepository: JsonRepository
 ) : ResultUseCase<Unit, List<Post>>(
         backgroundContext = Dispatchers.IO,

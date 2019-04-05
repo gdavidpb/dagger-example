@@ -5,7 +5,7 @@ import com.gdavidpb.daggerexample.domain.model.Post
 import com.gdavidpb.daggerexample.domain.usecase.service.GetPostsUseCase
 import com.gdavidpb.daggerexample.utils.LiveResult
 
-open class MainActivityViewModel constructor(
+open class MainActivityViewModel(
         private val getPostsUseCase: GetPostsUseCase
 ) : ViewModel() {
     val posts = LiveResult<List<Post>>()
