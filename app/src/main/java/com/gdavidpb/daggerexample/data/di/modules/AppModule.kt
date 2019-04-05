@@ -2,7 +2,6 @@ package com.gdavidpb.daggerexample.data.di.modules
 
 import android.content.Context
 import android.net.ConnectivityManager
-import com.gdavidpb.daggerexample.R
 import com.gdavidpb.daggerexample.data.source.service.JsonService
 import com.gdavidpb.daggerexample.data.source.service.JsonServiceDataStore
 import com.gdavidpb.daggerexample.domain.repository.JsonRepository
@@ -13,7 +12,8 @@ import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
-import org.koin.experimental.builder.create
+import org.koin.experimental.builder.factory
+import org.koin.experimental.builder.factoryBy
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -28,15 +28,15 @@ val appModule = module {
 
     single {
         OkHttpClient.Builder()
-            .build()
+                .build()
     }
 
     single {
         Retrofit.Builder()
-            .client(get())
-            .baseUrl(URL_BASE_API)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+                .client(get())
+                .baseUrl(URL_BASE_API)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
     }
 
     single {
@@ -45,15 +45,11 @@ val appModule = module {
 
     /* Factories */
 
-    factory<JsonRepository> {
-        JsonServiceDataStore(service = get())
-    }
+    factoryBy<JsonRepository, JsonServiceDataStore>()
 
     /* Use cases */
 
-    single {
-        create<GetPostsUseCase>()
-    }
+    factory<GetPostsUseCase>()
 
     /* View models */
 

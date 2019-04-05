@@ -7,14 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gdavidpb.daggerexample.R
-import com.gdavidpb.daggerexample.utils.isNetworkAvailable
-import com.gdavidpb.daggerexample.utils.notNull
-import com.gdavidpb.daggerexample.utils.observe
-import com.gdavidpb.daggerexample.domain.model.Data
-import com.gdavidpb.daggerexample.domain.model.DataState
 import com.gdavidpb.daggerexample.domain.model.Post
+import com.gdavidpb.daggerexample.domain.usecase.coroutines.Result
 import com.gdavidpb.daggerexample.presentation.viewmodel.MainActivityViewModel
 import com.gdavidpb.daggerexample.ui.adapters.PostAdapter
+import com.gdavidpb.daggerexample.utils.isNetworkAvailable
+import com.gdavidpb.daggerexample.utils.observe
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.support.v4.onRefresh
 import org.jetbrains.anko.toast
@@ -27,6 +25,8 @@ class MainActivity : AppCompatActivity() {
 
     private val mainActivityViewModel: MainActivityViewModel by viewModel()
 
+    private val postsAdapter = PostAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         with(mainActivityViewModel) {
-            observe(posts, ::onPostsLoaded)
+            observe(posts, ::postsObserver)
 
             getPosts()
 
@@ -46,32 +46,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onPostsLoaded(event: Data<List<Post>>?) {
-        event ?: return
-
-        with(event) {
-            when (dataState) {
-                DataState.LOADING -> sLayoutList.isRefreshing = true
-                DataState.ERROR -> sLayoutList.isRefreshing = false
-                DataState.SUCCESS -> sLayoutList.isRefreshing = false
+    private fun postsObserver(result: Result<List<Post>>?) {
+        when (result) {
+            is Result.OnLoading -> {
+                sLayoutList.isRefreshing = true
             }
+            is Result.OnSuccess -> {
+                sLayoutList.isRefreshing = false
 
-            data.notNull {
-                if (it.isNotEmpty()) {
-                    val adapter = PostAdapter(source = it)
+                val posts = result.value
 
-                    rViewList.swapAdapter(adapter, false)
-
+                if (posts.isNotEmpty()) {
                     tViewListEmpty.visibility = View.GONE
-                } else
-                    tViewListEmpty.visibility = View.VISIBLE
-            }
+                    rViewList.visibility = View.VISIBLE
 
-            exception.notNull {
+                    postsAdapter.swapItems(new = posts)
+                } else {
+                    rViewList.visibility = View.GONE
+                    tViewListEmpty.visibility = View.VISIBLE
+                }
+            }
+            is Result.OnError -> {
+                sLayoutList.isRefreshing = false
+
                 if (connectivityManager.isNetworkAvailable())
                     toast(R.string.toast_error)
                 else
                     toast(R.string.toast_no_connection)
+            }
+            else -> {
+                sLayoutList.isRefreshing = false
             }
         }
     }
