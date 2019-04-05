@@ -1,2 +1,2 @@
 # dagger-example
-Kotlin + Dagger2
+Kotlin + Dagger2 to Koin
