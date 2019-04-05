@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
 
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+
+            adapter = postsAdapter
         }
 
         with(mainActivityViewModel) {

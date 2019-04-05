@@ -11,5 +11,5 @@ open class GetPostsUseCase(
         backgroundContext = Dispatchers.IO,
         foregroundContext = Dispatchers.Main
 ) {
-    override suspend fun executeOnBackground(params: Unit): List<Post>? = jsonRepository.getPosts()
+    override suspend fun executeOnBackground(params: Unit) = jsonRepository.getPosts()
 }
