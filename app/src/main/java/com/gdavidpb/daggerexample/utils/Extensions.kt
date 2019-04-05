@@ -1,4 +1,4 @@
-package com.gdavidpb.daggerexample.data.utils
+package com.gdavidpb.daggerexample.utils
 
 import android.net.ConnectivityManager
 import androidx.fragment.app.Fragment

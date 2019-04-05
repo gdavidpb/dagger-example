@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gdavidpb.daggerexample.R
-import com.gdavidpb.daggerexample.data.utils.isNetworkAvailable
-import com.gdavidpb.daggerexample.data.utils.notNull
-import com.gdavidpb.daggerexample.data.utils.observe
+import com.gdavidpb.daggerexample.utils.isNetworkAvailable
+import com.gdavidpb.daggerexample.utils.notNull
+import com.gdavidpb.daggerexample.utils.observe
 import com.gdavidpb.daggerexample.domain.model.Data
 import com.gdavidpb.daggerexample.domain.model.DataState
 import com.gdavidpb.daggerexample.domain.model.Post

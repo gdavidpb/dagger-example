@@ -8,6 +8,7 @@ import com.gdavidpb.daggerexample.data.source.service.JsonServiceDataStore
 import com.gdavidpb.daggerexample.domain.repository.JsonRepository
 import com.gdavidpb.daggerexample.domain.usecase.service.GetPostsUseCase
 import com.gdavidpb.daggerexample.presentation.viewmodel.MainActivityViewModel
+import com.gdavidpb.daggerexample.utils.URL_BASE_API
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
@@ -33,7 +34,7 @@ val appModule = module {
     single {
         Retrofit.Builder()
             .client(get())
-            .baseUrl(androidContext().getString(R.string.baseUrl))
+            .baseUrl(URL_BASE_API)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
